@@ -1,6 +1,8 @@
 import useLoginModal from "@/hooks/useLoginModal";
 import useRegisterModal from "@/hooks/useRegisterModal";
+import { signIn } from "next-auth/react";
 import { useState, useCallback } from "react";
+import { toast } from "react-hot-toast";
 import Input from "../Input";
 import Modal from "../Modal";
 
@@ -25,7 +27,12 @@ const LoginModal = () => {
     try {
       setIsLoading(true);
 
-      //TODO ADD LOGIN
+      signIn("credentials", {
+        email,
+        password
+      });
+
+      toast.success("Login Successful");
 
       loginModal.onClose();
     } catch (error) {
@@ -33,7 +40,7 @@ const LoginModal = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [loginModal]);
+  }, [loginModal, email, password]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4 ">
@@ -58,7 +65,10 @@ const LoginModal = () => {
     <div className="text-neutral-400 text-center mt-4">
       <p>
         First time using Pwitter?
-        <span onClick={onToggle} className="text-white ml-2 cursor-pointer hover:underline">
+        <span
+          onClick={onToggle}
+          className="text-white ml-2 cursor-pointer hover:underline"
+        >
           Create an account
         </span>
       </p>
