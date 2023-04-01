@@ -21,6 +21,7 @@ const Input: React.FC<InputProps> = ({
             onChange={onChange}
             placeholder={placeholder}
             type={type}
+            required
             value={value}
             className="
                 w-full
