@@ -29,7 +29,7 @@ const LoginModal = () => {
 
       await signIn("credentials", {
         email,
-        password
+        password,
       });
 
       toast.success("Login Successful");
@@ -37,7 +37,7 @@ const LoginModal = () => {
       loginModal.onClose();
     } catch (error) {
       console.log(error);
-      toast.error("Invalid Email or Passwordd")
+      toast.error("Invalid Email or Passwordd");
     } finally {
       setIsLoading(false);
     }
