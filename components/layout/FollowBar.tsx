@@ -1,12 +1,22 @@
+import useCurrentUser from "@/hooks/useCurrentUser";
 import useUsers from "@/hooks/useUsers";
+import { useEffect, useState } from "react";
 import Avatar from "../Avatar";
 
 const FollowBar = () => {
   const { data: users = [] } = useUsers();
+  const { data: currentUser } = useCurrentUser();
+  const [userInfo, setUserInfo] = useState();
 
   if (users.length == 0) {
     return null;
   }
+
+  // useEffect(() => {
+  //   setUserInfo(
+  //     users.filter((obj: Record<string, any>) => obj.id !== currentUser.id)
+  //   );
+  // }, [userInfo]);
 
   return (
     <div className="px-6 py-4 hidden lg:block">
