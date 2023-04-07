@@ -5,20 +5,13 @@ import Avatar from "../Avatar";
 
 const FollowBar = () => {
   const { data: users = [] } = useUsers();
-  const { data: currentUser } = useCurrentUser();
+  
   const [userInfo, setUserInfo] = useState();
 
   if (users.length == 0) {
     return null;
   }
-
-  // useEffect(() => {
-  //   setUserInfo(
-  //     users.filter((obj: Record<string, any>) => obj.id !== currentUser.id)
-  //   );
-  // }, [userInfo]);
-
-  return (
+ (
     <div className="px-6 py-4 hidden lg:block">
       <div className="bg-neutral-800 rounded-xl p-4  ">
         <h2 className="text-white text-xl font-semibold">Who to follow</h2>
